@@ -1,0 +1,16 @@
+{
+    "name": "A1_scrapping_twitter",
+    "version": "0.0.1",
+    "homepage": "https://github.com/adrinv2/A1_scrapping_twitter",
+    "description": "A data scrapper, for twitter for an assingment",
+    "author": "Adri",
+    "main": "app.js",
+    "dependencies": {
+        "express": "latest",
+        "request": "latest",
+        "cheerio": "latest"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.2"
+    }
+}
