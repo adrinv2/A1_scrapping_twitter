@@ -7,43 +7,10 @@ var fs = require('fs');
 var port = 8081;
 var app = express();
 
-app.get('/twitter', function(req, res){
-
-const rp = require('request-promise');
-const cheerio = require('cheerio');
-
-const options = {
-  uri: 'https://twitter.com/search?q=murcia&src=typed_query',
-  transform: function (body) {
-    return cheerio.load(body);
-  }
-};
-
-rp(OPTIONS)
-    .then(function (data) {
-        // REQUEST SUCCEEDED: DO SOMETHING
-    })
-    .catch(function (err) {
-        // REQUEST FAILED: ERROR OF SOME KIND
-    });
-
-
-    res.send(data);
-
-  fs.writeFile('twitter-output.js', 'var twitter_list = [' + data +']', function(error){
-    console.log('File written on hard drive!');
-
-  });
-}
-});
-//All the web scraping magic will happen here
-//  res.send('Hello World!');
-
-});
 
 app.get('/wikipedia', function(req, res){
 
-  var url = 'https://en.wikipedia.org/wiki/Quartz';
+  var url = 'https://en.wikipedia.org/wiki/Ruby';
 
   request(url, function(error, response, html) {
     if(!error) {
@@ -68,6 +35,40 @@ app.get('/wikipedia', function(req, res){
 
       });
     }
+  });
+
+  app.get('/twitter', function(req, res){
+
+  const rp = require('request-promise');
+  const cheerio = require('cheerio');
+
+  const options = {
+    uri: 'https://twitter.com/search?q=murcia&src=typed_query',
+    transform: function (body) {
+      return cheerio.load(body);
+    }
+  };
+
+  rp(OPTIONS)
+      .then(function (data) {
+          // REQUEST SUCCEEDED: DO SOMETHING
+      })
+      .catch(function (err) {
+          // REQUEST FAILED: ERROR OF SOME KIND
+      });
+
+
+      res.send(data);
+
+    fs.writeFile('twitter-output.js', 'var twitter_list = [' + data +']', function(error){
+      console.log('File written on hard drive!');
+
+    });
+  }
+  });
+  //All the web scraping magic will happen here
+  //  res.send('Hello World!');
+
   });
 
 
