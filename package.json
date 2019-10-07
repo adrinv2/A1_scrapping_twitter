@@ -6,9 +6,10 @@
     "author": "Adri",
     "main": "app.js",
     "dependencies": {
+        "cheerio": "^1.0.0-rc.3",
         "express": "latest",
-        "request": "latest",
-        "cheerio": "latest"
+        "request": "^2.88.0",
+        "request-promise": "^4.2.4"
     },
     "devDependencies": {
         "nodemon": "^1.19.2"
